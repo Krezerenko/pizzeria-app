@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="primary">#FF0DC3DF</color>
+    <color name="secondary">#FFE85C24</color>
+    <color name="gray">#FF868686</color>
+    <color name="background">#FFF3F3F3</color>
+    <color name="image_placeholder">#FFE2E2E2</color>
+    <color name="soft">#FFADADAD</color>
+    <color name="accept">#FF68D429</color>
+    <color name="decline">#FFDF0D0D</color>
 </resources>
