@@ -1,5 +1,7 @@
 package io.github.krezerenko.sem4_pizzeria;
 
+import io.github.krezerenko.sem4_pizzeria.api.RetrofitClient;
+
 public class MenuItem
 {
     private final String name;

@@ -1,4 +1,4 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.api;
 
 public class RefreshTokenRequest
 {

@@ -5,9 +5,11 @@
             android:title="Меню"
             android:icon="@drawable/ic_bottom_menu" />
     <item
-            android:id="@+id/item_bottom_profile"
-            android:title="Профиль" />
+            android:id="@+id/item_bottom_cart"
+            android:title="Корзина"
+            android:icon="@drawable/ic_bottom_cart"/>
     <item
-            android:id="@+id/item_bottom_orders"
-            android:title="Заказы" />
+            android:id="@+id/item_bottom_profile"
+            android:title="Профиль"
+            android:icon="@drawable/ic_bottom_profile" />
 </menu>

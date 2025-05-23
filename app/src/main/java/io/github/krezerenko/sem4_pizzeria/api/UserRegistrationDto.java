@@ -1,13 +1,13 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.api;
 
-public class LoginRequest
+public class UserRegistrationDto
 {
     private final String name;
     private final String password;
 
-    public LoginRequest(String name, String password)
+    public UserRegistrationDto(String username, String password)
     {
-        this.name = name;
+        this.name = username;
         this.password = password;
     }
 

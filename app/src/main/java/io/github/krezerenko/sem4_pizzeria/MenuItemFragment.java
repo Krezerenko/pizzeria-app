@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import io.github.krezerenko.sem4_pizzeria.api.ApiService;
+import io.github.krezerenko.sem4_pizzeria.api.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,6 +60,7 @@ public class MenuItemFragment extends Fragment
                     if (response.isSuccessful())
                     {
                         recyclerView.setAdapter(new MenuItemAdapter(response.body()));
+                        Log.i("API", "onResponse: Received products " + response.body());
                     }
                     else
                     {

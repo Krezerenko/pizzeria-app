@@ -17,6 +17,10 @@
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">16sp</item>
     </style>
+    <style name="textBodyBold">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
     <style name="textBodySmall">
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">14sp</item>
@@ -38,7 +42,7 @@
         <item name="android:textSize">20sp</item>
     </style>
     <style name="textHeadlineLarge">
-        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">24sp</item>
     </style>
 
@@ -53,10 +57,25 @@
         <item name="android:textColor">@color/primary</item>
         <item name="android:textAppearance">@style/textBodySmall</item>
     </style>
+    <style name="buttonOutlinedPrimaryMedium" parent="buttonOutlinedPrimary">
+        <item name="android:insetTop">4dp</item>
+        <item name="android:insetBottom">4dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textAppearance">@style/textBodyBold</item>
+    </style>
+    <style name="buttonDecline" parent="buttonOutlinedPrimaryMedium">
+        <item name="strokeColor">@color/decline</item>
+        <item name="android:textColor">@color/decline</item>
+    </style>
     <style name="buttonSolidPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="android:insetTop">4dp</item>
+        <item name="android:insetBottom">4dp</item>
         <item name="backgroundTint">@color/primary</item>
         <item name="shapeAppearanceOverlay">@style/circular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAppearance">@style/textBodyMedium</item>
+    </style>
+    <style name="buttonDanger" parent="buttonSolidPrimary">
+        <item name="backgroundTint">@color/decline</item>
     </style>
 </resources>

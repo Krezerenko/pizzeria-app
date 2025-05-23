@@ -1,23 +1,20 @@
 package io.github.krezerenko.sem4_pizzeria;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity
 {
-
+    private int currentFragment = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -31,30 +28,35 @@ public class MainActivity extends AppCompatActivity
             return insets;
         });
 
-        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-        UserRegistrationDto user = new UserRegistrationDto("user", "password");
-
-        Call<ResponseBody> call = apiService.registerUser(user);
-        call.enqueue(new Callback<>()
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav_main);
+        bottomNav.setOnItemSelectedListener(item ->
         {
-            @Override
-            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response)
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            int itemId = item.getItemId();
+            if (itemId == R.id.item_bottom_menu && currentFragment != 0)
             {
-                if (response.isSuccessful())
-                {
-                    Log.d("API", "Registration successful!");
-                }
-                else
-                {
-                    Log.e("API", "Registration failed: " + response.code());
-                }
+                changeFragment(new MenuFragment(), fragmentManager);
+                currentFragment = 0;
             }
-
-            @Override
-            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t)
+            if (itemId == R.id.item_bottom_cart && currentFragment != 1)
             {
-                Log.e("API", "Error: " + t.getMessage());
+                changeFragment(new ProfileFragment(), fragmentManager);
+                currentFragment = 1;
             }
+            if (itemId == R.id.item_bottom_profile && currentFragment != 2)
+            {
+                changeFragment(new ProfileFragment(), fragmentManager);
+                currentFragment = 2;
+            }
+            return true;
         });
+
+    }
+
+    private void changeFragment(Fragment newFragment, FragmentManager manager)
+    {
+        manager.beginTransaction()
+                .replace(R.id.fragment_container_main, newFragment)
+                .commit();
     }
 }
