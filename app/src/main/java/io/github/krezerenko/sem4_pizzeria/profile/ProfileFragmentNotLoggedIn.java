@@ -1,4 +1,4 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.profile;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import io.github.krezerenko.sem4_pizzeria.R;
 import io.github.krezerenko.sem4_pizzeria.api.AuthResponse;
 import io.github.krezerenko.sem4_pizzeria.api.LoginRequest;
 import io.github.krezerenko.sem4_pizzeria.api.UserRegistrationDto;
@@ -53,7 +53,7 @@ public class ProfileFragmentNotLoggedIn extends Fragment
         Context context = view.getContext();
 
         ProfileInputField inputUsername = view.findViewById(R.id.input_profile_username);
-        ProfileInputField inputPassword = view.findViewById(R.id.input_profile_password);
+        ProfileInputField inputPassword = view.findViewById(R.id.input_profile_password_save);
         EditText editUsername = inputUsername.getEditFieldValue();
         EditText editPassword = inputPassword.getEditFieldValue();
         editPassword.setTransformationMethod(new PasswordTransformationMethod());

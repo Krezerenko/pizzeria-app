@@ -2,15 +2,13 @@ package io.github.krezerenko.sem4_pizzeria.api;
 
 import java.util.List;
 
-import io.github.krezerenko.sem4_pizzeria.MenuItem;
-import io.github.krezerenko.sem4_pizzeria.UserRequestDto;
-import okhttp3.ResponseBody;
+import io.github.krezerenko.sem4_pizzeria.menu.Product;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public interface ApiService
 {
@@ -29,6 +27,12 @@ public interface ApiService
     @POST("api/users/me")
     Call<UserRequestDto> saveUserByToken(@Header("Authorization") String authHeader, @Body UserRequestDto user);
 
+    @DELETE("api/users/me")
+    Call<Void> deleteUserByToken(@Header("Authorization") String authHeader);
+
+    @POST("api/users/me/password")
+    Call<Void> confirmPasswordByToken(@Header("Authorization") String authHeader, @Body PasswordDto request);
+
     @GET("api/public/products")
-    Call<List<MenuItem>> getProducts();
+    Call<List<Product>> getProducts();
 }

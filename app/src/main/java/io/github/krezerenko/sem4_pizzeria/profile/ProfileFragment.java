@@ -1,8 +1,5 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.profile;
 
-import static io.github.krezerenko.sem4_pizzeria.ProfileViewModel.AuthState;
-
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,27 +8,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import io.github.krezerenko.sem4_pizzeria.R;
 import io.github.krezerenko.sem4_pizzeria.api.ApiService;
-import io.github.krezerenko.sem4_pizzeria.api.AuthResponse;
-import io.github.krezerenko.sem4_pizzeria.api.RefreshTokenRequest;
 import io.github.krezerenko.sem4_pizzeria.api.RetrofitClient;
 import io.github.krezerenko.sem4_pizzeria.api.SecureStorageHelper;
-import io.github.krezerenko.sem4_pizzeria.api.UserResponseDto;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ProfileFragment extends Fragment
 {
-    public static final String ARG_USERNAME = "username";
-    public static final String ARG_EMAIL = "email";
-    public static final String ARG_PHONE_NUMBER = "phone_number";
-
     private ProfileViewModel viewModel;
 
     public ProfileFragment()

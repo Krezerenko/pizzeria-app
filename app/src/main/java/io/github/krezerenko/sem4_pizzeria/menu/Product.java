@@ -1,15 +1,16 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.menu;
 
 import io.github.krezerenko.sem4_pizzeria.api.RetrofitClient;
 
-public class MenuItem
+public class Product
 {
     private final String name;
     private final String description;
     private final double price;
+    private final int points = 17;
     private final String imagePath;
 
-    public MenuItem(String name, String description, double price, String imagePath)
+    public Product(String name, String description, double price, String imagePath)
     {
         this.name = name;
         this.description = description;
@@ -27,9 +28,14 @@ public class MenuItem
         return description;
     }
 
-    public String getPrice()
+    public double getPrice()
     {
-        return "от " + price + " руб.";
+        return price;
+    }
+
+    public int getPoints()
+    {
+        return points;
     }
 
     public String getImageUrl()

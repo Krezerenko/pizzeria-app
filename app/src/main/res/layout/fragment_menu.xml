@@ -8,7 +8,7 @@
         android:clipToPadding="false"
         android:background="@color/background"
         android:orientation="vertical"
-        tools:context=".MenuFragment">
+        tools:context=".menu.MenuFragment">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -21,6 +21,7 @@
             android:orientation="horizontal">
 
         <SearchView
+                android:id="@+id/search_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -71,9 +72,10 @@
 <!--    </LinearLayout>-->
 
     <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container_main"
+            android:id="@+id/fragment_container_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="io.github.krezerenko.sem4_pizzeria.MenuItemFragment"/>
+            android:layout_marginTop="9dp"
+            android:name="io.github.krezerenko.sem4_pizzeria.menu.MenuItemFragment"/>
 
 </LinearLayout>

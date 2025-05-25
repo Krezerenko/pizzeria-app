@@ -46,6 +46,10 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="searchViewText">
+        <item name="editTextColor">@color/black</item>
+    </style>
+
     <style name="buttonOutlinedPrimary" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:insetTop">8dp</item>
         <item name="android:insetBottom">8dp</item>
@@ -71,9 +75,10 @@
         <item name="android:insetTop">4dp</item>
         <item name="android:insetBottom">4dp</item>
         <item name="backgroundTint">@color/primary</item>
+        <item name="strokeWidth">0dp</item>
         <item name="shapeAppearanceOverlay">@style/circular</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textAppearance">@style/textBodyMedium</item>
+        <item name="android:textAppearance">@style/textBodyBold</item>
     </style>
     <style name="buttonDanger" parent="buttonSolidPrimary">
         <item name="backgroundTint">@color/decline</item>

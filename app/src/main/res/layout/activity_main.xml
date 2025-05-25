@@ -37,11 +37,11 @@
         </LinearLayout>
 
         <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment_container_main"
+                android:id="@+id/fragment_container_menu"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:name="io.github.krezerenko.sem4_pizzeria.MenuFragment"/>
+                android:name="io.github.krezerenko.sem4_pizzeria.menu.MenuFragment"/>
         <View
                 android:layout_width="0dp"
                 android:layout_height="120dp" />

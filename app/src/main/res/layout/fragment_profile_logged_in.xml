@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ProfileFragment">
+        tools:context=".profile.ProfileFragment">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -113,28 +113,28 @@
                     android:textAppearance="@style/textHeadlineLarge"
                     android:text="Профиль" />
 
-            <io.github.krezerenko.sem4_pizzeria.ProfileInputField
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileInputField
                     android:id="@+id/input_profile_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:title="Ваше имя пользователя"
                     android:hint="Введите имя пользователя" />
-            <io.github.krezerenko.sem4_pizzeria.ProfileInputField
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileInputField
                     android:id="@+id/input_profile_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:title="Ваша электронная почта"
                     android:hint="Введите электронную почту"
                     android:inputType="textEmailAddress"/>
-            <io.github.krezerenko.sem4_pizzeria.ProfileInputField
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileInputField
                     android:id="@+id/input_profile_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:title="Ваш номер телефона"
                     android:hint="Введите номер телефона"
                     android:inputType="phone"/>
-            <io.github.krezerenko.sem4_pizzeria.ProfileInputField
-                    android:id="@+id/input_profile_password"
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileInputField
+                    android:id="@+id/input_profile_password_save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:title="Подтвердите пароль"
@@ -163,15 +163,15 @@
                     android:textAppearance="@style/textHeadlineLarge"
                     android:text="Настройки"/>
 
-            <io.github.krezerenko.sem4_pizzeria.ProfileSetting
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileSetting
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:name="Уведомления"/>
-            <io.github.krezerenko.sem4_pizzeria.ProfileSetting
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileSetting
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:name="Адрес доставки"/>
-            <io.github.krezerenko.sem4_pizzeria.ProfileSetting
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileSetting
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:name="Ваши карты"/>
@@ -183,10 +183,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="5dp"
-                style="@style/buttonDecline"
+                style="@style/buttonDanger"
                 android:text="Удалить аккаунт" />
-        <io.github.krezerenko.sem4_pizzeria.ProfileInputField
+        <io.github.krezerenko.sem4_pizzeria.profile.ProfileInputField
+                android:id="@+id/input_profile_password_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:title="Подтвердите пароль"

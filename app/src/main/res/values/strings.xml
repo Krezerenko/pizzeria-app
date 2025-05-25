@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">PizzaMeek</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="list_profile_settings">
-        <item>Уведомления</item>
-        <item>Выбрать адрес</item>
-        <item>Способы оплаты</item>
-    </string-array>
+    <string name="price_menu_item">от %1$.1f руб.</string>
+    <string name="count_cart">%1$d %2$s</string>
+    <string name="price_cart">%1$.1f руб.</string>
+    <string name="discount_cart">%1$d%%</string>
+    <string name="points_cart">+ %1$d</string>
 </resources>

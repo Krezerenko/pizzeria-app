@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient
 {
-    public static final String BASE_URL = "https://patricia-regarded-bowling-recipients.trycloudflare.com";
+    public static final String BASE_URL = "https://air-md-dictionary-ka.trycloudflare.com";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient()

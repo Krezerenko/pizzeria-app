@@ -1,7 +1,8 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.profile;
 
 import android.util.Log;
 
+import androidx.annotation.WorkerThread;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,11 +11,12 @@ import com.google.gson.Gson;
 
 import io.github.krezerenko.sem4_pizzeria.api.ApiService;
 import io.github.krezerenko.sem4_pizzeria.api.AuthResponse;
+import io.github.krezerenko.sem4_pizzeria.api.PasswordDto;
 import io.github.krezerenko.sem4_pizzeria.api.RefreshTokenRequest;
 import io.github.krezerenko.sem4_pizzeria.api.SecureStorageHelper;
 import io.github.krezerenko.sem4_pizzeria.api.TokenPair;
+import io.github.krezerenko.sem4_pizzeria.api.UserRequestDto;
 import io.github.krezerenko.sem4_pizzeria.api.UserResponseDto;
-import retrofit2.Call;
 import retrofit2.Response;
 
 public class ProfileViewModel extends ViewModel
@@ -36,6 +38,7 @@ public class ProfileViewModel extends ViewModel
 
     private void checkInitialAuthState()
     {
+
         new Thread(() ->
         {
             try
@@ -187,6 +190,59 @@ public class ProfileViewModel extends ViewModel
                 Log.e("API", "saveUser: Error while saving user", e);
             }
         }).start();
+    }
+
+    public void deleteUser()
+    {
+        new Thread(() ->
+        {
+            try
+            {
+                Gson gson = new Gson();
+                TokenPair tokens = gson.fromJson(storageHelper.getDecryptedData(), TokenPair.class);
+                String accessToken = tokens.getAccessToken();
+                Response<Void> response = api.deleteUserByToken(
+                        "Bearer " + accessToken).execute();
+                if (response.isSuccessful())
+                {
+                    storageHelper.clearData();
+                    authState.postValue(AuthState.UNAUTHENTICATED);
+                    return;
+                }
+                String refreshToken = tokens.getRefreshToken();
+                if (!tryRefresh(refreshToken))
+                {
+                    Log.e("API", "saveUser: Error while saving user");
+                    return;
+                }
+                tokens = gson.fromJson(storageHelper.getDecryptedData(), TokenPair.class);
+                accessToken = tokens.getAccessToken();
+                response = api.deleteUserByToken(
+                        "Bearer " + accessToken).execute();
+                if (response.isSuccessful())
+                {
+                    storageHelper.clearData();
+                    authState.postValue(AuthState.UNAUTHENTICATED);
+                    return;
+                }
+                Log.e("API", "saveUser: Error while saving user");
+            }
+            catch (Exception e)
+            {
+                Log.e("API", "saveUser: Error while saving user", e);
+            }
+        }).start();
+    }
+
+    @WorkerThread
+    public boolean confirmPassword(String password) throws Exception
+    {
+        Gson gson = new Gson();
+        TokenPair tokens = gson.fromJson(storageHelper.getDecryptedData(), TokenPair.class);
+        String accessToken = tokens.getAccessToken();
+        Response<Void> response = api.confirmPasswordByToken("Bearer " + accessToken,
+                new PasswordDto(password)).execute();
+        return response.isSuccessful();
     }
 
     public enum AuthState

@@ -12,9 +12,14 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import io.github.krezerenko.sem4_pizzeria.cart.CartFragment;
+import io.github.krezerenko.sem4_pizzeria.menu.MenuFragment;
+import io.github.krezerenko.sem4_pizzeria.profile.ProfileFragment;
+
 public class MainActivity extends AppCompatActivity
 {
     private int currentFragment = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -40,13 +45,18 @@ public class MainActivity extends AppCompatActivity
             }
             if (itemId == R.id.item_bottom_cart && currentFragment != 1)
             {
-                changeFragment(new ProfileFragment(), fragmentManager);
+                changeFragment(new CartFragment(), fragmentManager);
                 currentFragment = 1;
             }
-            if (itemId == R.id.item_bottom_profile && currentFragment != 2)
+            if (itemId == R.id.item_bottom_orders && currentFragment != 2)
+            {
+                changeFragment(new Fragment(), fragmentManager);
+                currentFragment = 2;
+            }
+            if (itemId == R.id.item_bottom_profile && currentFragment != 3)
             {
                 changeFragment(new ProfileFragment(), fragmentManager);
-                currentFragment = 2;
+                currentFragment = 3;
             }
             return true;
         });
@@ -56,7 +66,7 @@ public class MainActivity extends AppCompatActivity
     private void changeFragment(Fragment newFragment, FragmentManager manager)
     {
         manager.beginTransaction()
-                .replace(R.id.fragment_container_main, newFragment)
+                .replace(R.id.fragment_container_menu, newFragment)
                 .commit();
     }
 }

@@ -8,4 +8,9 @@
     <declare-styleable name="ProfileSetting">
         <attr name="android:name"/>
     </declare-styleable>
+    <declare-styleable name="ButtonModifyCount">
+        <attr name="paddingHorizontal" format="dimension"/>
+        <attr name="insets" format="dimension"/>
+        <attr name="count" format="integer"/>
+    </declare-styleable>
 </resources>

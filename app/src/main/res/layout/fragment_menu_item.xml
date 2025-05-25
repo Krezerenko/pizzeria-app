@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
     <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image"
+            android:id="@+id/image_menu_item"
             android:layout_width="130dp"
             android:layout_height="130dp"
             app:shapeAppearanceOverlay="@style/circular"
@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
         <TextView
-                android:id="@+id/text_name"
+                android:id="@+id/text_menu_item_name"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
@@ -42,7 +42,7 @@
                 android:layout_height="2dp" />
 
         <TextView
-                android:id="@+id/text_description"
+                android:id="@+id/text_menu_item_description"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:textAppearance="@style/textBodyVerySmall"
@@ -55,7 +55,7 @@
                 android:orientation="horizontal">
 
             <TextView
-                    android:id="@+id/text_price"
+                    android:id="@+id/text_menu_item_price"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:textAppearance="@style/textTitleMedium"
@@ -67,12 +67,11 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-            <Button
-                    android:id="@+id/button_select"
+            <io.github.krezerenko.sem4_pizzeria.cart.ButtonModifyCount
+                    android:id="@+id/button_modify_menu_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Выбрать">
-            </Button>
+                    app:paddingHorizontal="18dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

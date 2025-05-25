@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ProfileFragment">
+        tools:context=".profile.ProfileFragment">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -30,14 +30,14 @@
                 android:paddingHorizontal="20dp"
                 android:orientation="vertical">
 
-            <io.github.krezerenko.sem4_pizzeria.ProfileInputField
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileInputField
                     android:id="@+id/input_profile_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:title="Имя пользователя"
                     android:hint="Введите имя пользователя"/>
-            <io.github.krezerenko.sem4_pizzeria.ProfileInputField
-                    android:id="@+id/input_profile_password"
+            <io.github.krezerenko.sem4_pizzeria.profile.ProfileInputField
+                    android:id="@+id/input_profile_password_save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:title="Пароль"

@@ -1,16 +1,17 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.profile;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import io.github.krezerenko.sem4_pizzeria.R;
 
 public class ProfileInputField extends LinearLayout
 {

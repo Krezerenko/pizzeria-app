@@ -3,9 +3,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/list"
-        android:name="io.github.krezerenko.sem4_pizzeria.MenuItemFragment"
+        android:name="io.github.krezerenko.sem4_pizzeria.CartItemFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".menu.MenuItemFragment"
-        tools:listitem="@layout/fragment_menu_item" />
+        tools:context=".cart.CartItemFragment"
+        tools:listitem="@layout/fragment_cart_item" />

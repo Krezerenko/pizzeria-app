@@ -1,4 +1,4 @@
-package io.github.krezerenko.sem4_pizzeria;
+package io.github.krezerenko.sem4_pizzeria.menu;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,14 +18,17 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import io.github.krezerenko.sem4_pizzeria.R;
 import io.github.krezerenko.sem4_pizzeria.api.ApiService;
 import io.github.krezerenko.sem4_pizzeria.api.RetrofitClient;
+import io.github.krezerenko.sem4_pizzeria.cart.CartViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MenuItemFragment extends Fragment
 {
+    private CartViewModel viewModel;
 
     public MenuItemFragment()
     {
@@ -33,6 +38,7 @@ public class MenuItemFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(CartViewModel.class);
     }
 
     @Override
@@ -51,28 +57,13 @@ public class MenuItemFragment extends Fragment
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            ApiService api = RetrofitClient.getClient().create(ApiService.class);
-            api.getProducts().enqueue(new Callback<List<MenuItem>>()
+            viewModel.getInitializationState().observe(getViewLifecycleOwner(), isInitialized ->
             {
-                @Override
-                public void onResponse(@NonNull Call<List<MenuItem>> call, @NonNull Response<List<MenuItem>> response)
-                {
-                    if (response.isSuccessful())
-                    {
-                        recyclerView.setAdapter(new MenuItemAdapter(response.body()));
-                        Log.i("API", "onResponse: Received products " + response.body());
-                    }
-                    else
-                    {
-                        Log.e("API", "onResponse: Failed to receive products");
-                    }
-                }
-
-                @Override
-                public void onFailure(@NonNull Call<List<MenuItem>> call, @NonNull Throwable t)
-                {
-                    Log.e("API", "onResponse: Failed to receive products", t);
-                }
+                if (!isInitialized) return;
+                MenuItemAdapter adapter = new MenuItemAdapter(List.copyOf(viewModel.getCartItems()));
+                recyclerView.setAdapter(adapter);
+                MenuFragment parent = (MenuFragment)getParentFragment();
+                parent.initSearch(adapter);
             });
         }
     }
