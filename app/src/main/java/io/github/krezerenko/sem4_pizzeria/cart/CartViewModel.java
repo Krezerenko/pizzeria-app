@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.krezerenko.sem4_pizzeria.api.ApiService;
+import io.github.krezerenko.sem4_pizzeria.api.GistService;
 import io.github.krezerenko.sem4_pizzeria.api.RetrofitClient;
+import io.github.krezerenko.sem4_pizzeria.api.TunnelBackedCallback;
 import io.github.krezerenko.sem4_pizzeria.menu.MenuFragment;
 import io.github.krezerenko.sem4_pizzeria.menu.MenuItemAdapter;
 import io.github.krezerenko.sem4_pizzeria.menu.Product;
@@ -29,7 +31,7 @@ public class CartViewModel extends ViewModel
     public CartViewModel()
     {
         ApiService api = RetrofitClient.getClient().create(ApiService.class);
-        api.getProducts().enqueue(new Callback<List<Product>>()
+        TunnelBackedCallback.enqueue(api.getProducts(), new Callback<List<Product>>()
         {
             @Override
             public void onResponse(@NonNull Call<List<Product>> call, @NonNull Response<List<Product>> response)
@@ -48,7 +50,7 @@ public class CartViewModel extends ViewModel
             @Override
             public void onFailure(@NonNull Call<List<Product>> call, @NonNull Throwable t)
             {
-                Log.e("API", "onResponse: Failed to receive products", t);
+                Log.e("API", "onFailure: Failed to receive products");
             }
         });
 
@@ -71,24 +73,4 @@ public class CartViewModel extends ViewModel
     {
         return isInitialized;
     }
-
-//    public void incrementWithName(String name)
-//    {
-//        int position = cartItems.indexOfFirst(item -> item.getProduct().getName().equals(name));
-//        if (position == -1) return;
-//        cartItems
-//    }
-//
-//    public void incrementOnPosition(int position)
-//    {
-//        ProductCounted item = cartItems.get(position);
-//        cartItems.set(position, new ProductCounted(item.getProduct(), item.getCount() + 1));
-//    }
-//
-//    public void decrementOnPosition(int position)
-//    {
-//        ProductCounted item = cartItems.get(position);
-//        if (item.getCount() == 0) return;
-//        cartItems.set(position, new ProductCounted(item.getProduct(), item.getCount() - 1));
-//    }
 }

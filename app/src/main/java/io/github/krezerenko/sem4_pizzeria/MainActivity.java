@@ -48,15 +48,10 @@ public class MainActivity extends AppCompatActivity
                 changeFragment(new CartFragment(), fragmentManager);
                 currentFragment = 1;
             }
-            if (itemId == R.id.item_bottom_orders && currentFragment != 2)
-            {
-                changeFragment(new Fragment(), fragmentManager);
-                currentFragment = 2;
-            }
-            if (itemId == R.id.item_bottom_profile && currentFragment != 3)
+            if (itemId == R.id.item_bottom_profile && currentFragment != 2)
             {
                 changeFragment(new ProfileFragment(), fragmentManager);
-                currentFragment = 3;
+                currentFragment = 2;
             }
             return true;
         });

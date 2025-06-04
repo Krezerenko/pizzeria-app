@@ -40,6 +40,6 @@ public class Product
 
     public String getImageUrl()
     {
-        return RetrofitClient.BASE_URL + "/api/public/images/" + imagePath;
+        return RetrofitClient.getBaseUrl() + "/api/public/images/" + imagePath;
     }
 }

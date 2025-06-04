@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import io.github.krezerenko.sem4_pizzeria.api.ApiService;
 import io.github.krezerenko.sem4_pizzeria.api.AuthResponse;
 import io.github.krezerenko.sem4_pizzeria.api.PasswordDto;
+import io.github.krezerenko.sem4_pizzeria.api.RefreshResponse;
 import io.github.krezerenko.sem4_pizzeria.api.RefreshTokenRequest;
 import io.github.krezerenko.sem4_pizzeria.api.SecureStorageHelper;
 import io.github.krezerenko.sem4_pizzeria.api.TokenPair;
@@ -76,10 +77,11 @@ public class ProfileViewModel extends ViewModel
         }).start();
     }
 
+    @WorkerThread
     private boolean tryRefresh(String refreshToken) throws Exception
     {
-        Response<AuthResponse> responseRefresh = api
-                .refreshToken(new RefreshTokenRequest(refreshToken))
+        Response<RefreshResponse> responseRefresh = api
+                .refreshToken("Bearer " + refreshToken)
                 .execute();
         if (responseRefresh.isSuccessful() && responseRefresh.body() != null)
         {

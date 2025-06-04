@@ -19,7 +19,7 @@ public interface ApiService
     Call<AuthResponse> loginUser(@Body LoginRequest request);
 
     @POST("api/auth/refresh")
-    Call<AuthResponse> refreshToken(@Body RefreshTokenRequest request);
+    Call<RefreshResponse> refreshToken(@Header("Authorization") String authHeader);
 
     @GET("api/users/me")
     Call<UserResponseDto> getUserByToken(@Header("Authorization") String authHeader);
